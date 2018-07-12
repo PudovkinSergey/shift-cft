@@ -30,6 +30,7 @@ public final class TasksActivity extends BaseActivity implements TasksListView {
     private RecyclerView recyclerView;
     private FloatingActionButton createTaskButton;
     private TextView usernameView;
+    private TextView userInfo;
     private TasksAdapter adapter;
 
     private TasksListPresenter presenter;
@@ -71,7 +72,7 @@ public final class TasksActivity extends BaseActivity implements TasksListView {
         mSwipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         recyclerView = findViewById(R.id.tasks_recycle_view);
         createTaskButton = findViewById(R.id.create_task_button);
-
+        userInfo=findViewById(R.id.user_description_view);
         createTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,5 +156,6 @@ public final class TasksActivity extends BaseActivity implements TasksListView {
     public void showUserInfo(User user) {
         //TODO:: show user info
         usernameView.setText(user.getName());
+        userInfo.setText(getString(R.string.tasks_your_rating,String.valueOf(user.getKarma())));
     }
 }

@@ -48,7 +48,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
-                        android:text="Good man, may be" />
+                        android:text="@string/tasks_your_rating" />
                 </LinearLayout>
             </android.support.v7.widget.Toolbar>
 
