@@ -1,25 +1,20 @@
 package ru.ftc.android.shifttemple.features.tasks.presentation;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ru.ftc.android.shifttemple.R;
@@ -28,7 +23,6 @@ import ru.ftc.android.shifttemple.features.MvpPresenter;
 import ru.ftc.android.shifttemple.features.MvpView;
 import ru.ftc.android.shifttemple.features.tasks.domain.model.Bid;
 import ru.ftc.android.shifttemple.features.tasks.domain.model.Task;
-
 import ru.ftc.android.shifttemple.features.users.presentation.UserLoginLoginActivity;
 
 public final class TaskActivity extends BaseActivity implements TaskView {
@@ -105,12 +99,18 @@ public final class TaskActivity extends BaseActivity implements TaskView {
                 LinearLayout.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
         responceButton = findViewById(R.id.responseButton);
-        closeTaskButton = findViewById(R.id.closeTaskButton);
-        responceButton.setOnClickListener(new View.OnClickListener() {
+                responceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onCreateBidClicked();
+            }
+        });
 
+        closeTaskButton = findViewById(R.id.closeTaskButton);
+        closeTaskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onCloseTaskClicked();
             }
         });
 
@@ -194,6 +194,11 @@ public final class TaskActivity extends BaseActivity implements TaskView {
         } else {
             closeTaskButton.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void leaveTaskActivity() {
+        onBackPressed();
     }
 
     @Override

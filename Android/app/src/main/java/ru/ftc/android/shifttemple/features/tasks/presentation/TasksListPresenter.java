@@ -1,16 +1,10 @@
 package ru.ftc.android.shifttemple.features.tasks.presentation;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
-import ru.ftc.android.shifttemple.App;
-import ru.ftc.android.shifttemple.R;
 import ru.ftc.android.shifttemple.exception.NotAuthorizedException;
 import ru.ftc.android.shifttemple.features.MvpPresenter;
-import ru.ftc.android.shifttemple.features.books.domain.model.Success;
 import ru.ftc.android.shifttemple.features.tasks.domain.TasksInteractor;
 import ru.ftc.android.shifttemple.features.tasks.domain.model.Task;
 import ru.ftc.android.shifttemple.features.users.domain.model.User;
@@ -18,6 +12,7 @@ import ru.ftc.android.shifttemple.network.Carry;
 
 final class TasksListPresenter extends MvpPresenter<TasksListView> {
     private final TasksInteractor interactor;
+    private User user;
 
     TasksListPresenter(TasksInteractor interactor) {
         this.interactor = interactor;
@@ -31,9 +26,10 @@ final class TasksListPresenter extends MvpPresenter<TasksListView> {
 
     private void loadUserInfo() {
         view.showProgress();
-        interactor.loadLocalUser(new Carry<User>() {
+        interactor.loadUserFromServer(new Carry<User>() {
             @Override
             public void onSuccess(User result) {
+                user = result;
                 view.showUserInfo(result);
                 view.hideProgress();
             }
@@ -55,6 +51,9 @@ final class TasksListPresenter extends MvpPresenter<TasksListView> {
                 if (view == null) {
                     return;
                 }
+
+
+
                 view.showTaskList(result);
                 view.hideProgress();
             }
@@ -90,7 +89,11 @@ final class TasksListPresenter extends MvpPresenter<TasksListView> {
 
 
     public void onCreateTaskClicked() {
-        view.showNewTaskForm();
-        loadTasks();
+        if (user != null && user.getKarma()>0){
+            view.showNewTaskForm();
+        } else {
+            view.showError("You do not have enough karma, help someone");
+        }
+
     }
 }

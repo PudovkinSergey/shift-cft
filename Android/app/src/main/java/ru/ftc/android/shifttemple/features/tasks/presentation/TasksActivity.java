@@ -1,6 +1,5 @@
 package ru.ftc.android.shifttemple.features.tasks.presentation;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -48,6 +47,7 @@ public final class TasksActivity extends BaseActivity implements TasksListView {
 
     @Override
     public void showNewTaskForm() {
+
         Intent intent = new Intent(TasksActivity.this, NewTaskActivity.class);
         startActivity(intent);
     }

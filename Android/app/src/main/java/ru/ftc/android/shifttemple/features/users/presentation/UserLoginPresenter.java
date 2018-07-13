@@ -42,6 +42,9 @@ final class UserLoginPresenter extends MvpPresenter<UserLoginView> {
             @Override
             public void onSuccess(User result) {
                 // view hide etc
+                if (view == null) {
+                    return;
+                }
                 view.showError("Hello " + result.getName());
                 view.hideProgress();
                 view.hideActivity();
@@ -49,6 +52,9 @@ final class UserLoginPresenter extends MvpPresenter<UserLoginView> {
 
             @Override
             public void onFailure(Throwable throwable) {
+                if (view == null) {
+                    return;
+                }
                 view.hideProgress();
                 view.showError(throwable.getMessage());
             }
