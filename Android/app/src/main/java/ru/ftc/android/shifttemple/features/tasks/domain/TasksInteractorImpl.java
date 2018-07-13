@@ -9,6 +9,7 @@ import ru.ftc.android.shifttemple.features.tasks.data.TasksRepository;
 import ru.ftc.android.shifttemple.features.tasks.domain.model.Bid;
 import ru.ftc.android.shifttemple.features.tasks.domain.model.Task;
 import ru.ftc.android.shifttemple.features.users.data.UsersLocalRepository;
+import ru.ftc.android.shifttemple.features.users.data.UsersRepository;
 import ru.ftc.android.shifttemple.features.users.domain.model.User;
 import ru.ftc.android.shifttemple.network.Carry;
 
@@ -17,11 +18,14 @@ public final class TasksInteractorImpl implements TasksInteractor {
     private final TasksRepository repository;
 
     private final UsersLocalRepository repositoryUsersLocal;
+    private UsersRepository repositoryUsersServer;
 
-    public TasksInteractorImpl(TasksRepository repository, UsersLocalRepository repositoryUsersLocal) {
+    public TasksInteractorImpl(TasksRepository repository, UsersLocalRepository repositoryUsersLocal, UsersRepository repositoryUsersServer) {
         this.repository = repository;
         this.repositoryUsersLocal = repositoryUsersLocal;
+        this.repositoryUsersServer = repositoryUsersServer;
     }
+
 
     private Boolean checkUserToken(final Carry carry) {
         if (repositoryUsersLocal.getUserToken().isEmpty()) {
@@ -37,7 +41,7 @@ public final class TasksInteractorImpl implements TasksInteractor {
         Boolean result = false;
 
         if (repositoryUsersLocal.getUser() != null && task.getUserId() != null) {
-            result = (task.getUserId() == repositoryUsersLocal.getUser().getId());
+            result = (task.getUserId().equals(repositoryUsersLocal.getUser().getId()));
         }
 
         return result;
@@ -128,5 +132,15 @@ public final class TasksInteractorImpl implements TasksInteractor {
         } else {
             carry.onFailure(new UnknownException("Empty local user"));
         }
+    }
+
+    @Override
+    public void loadUserFromServer(Carry<User> carry) {
+        if (!checkUserToken(carry)) {
+            return;
+        }
+
+        User user = repositoryUsersLocal.getUser();
+        repositoryUsersServer.loadUser(user.getId(), carry);
     }
 }

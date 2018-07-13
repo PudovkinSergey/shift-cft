@@ -32,4 +32,7 @@ public interface TasksInteractor {
 
     void loadLocalUser(Carry<User> carry);
 
+    void loadUserFromServer(Carry<User> carry);
+
+
 }

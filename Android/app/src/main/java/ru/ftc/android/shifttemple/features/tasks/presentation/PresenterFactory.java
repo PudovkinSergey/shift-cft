@@ -13,10 +13,12 @@ import ru.ftc.android.shifttemple.features.tasks.data.TasksRepositoryImpl;
 import ru.ftc.android.shifttemple.features.tasks.domain.TasksInteractor;
 import ru.ftc.android.shifttemple.features.tasks.domain.TasksInteractorImpl;
 import ru.ftc.android.shifttemple.features.users.data.UserLocalRepositoryFactory;
-import ru.ftc.android.shifttemple.features.users.data.UsersLocalDataSource;
-import ru.ftc.android.shifttemple.features.users.data.UsersLocalDataSourceImpl;
+import ru.ftc.android.shifttemple.features.users.data.UsersApi;
+import ru.ftc.android.shifttemple.features.users.data.UsersDataSource;
+import ru.ftc.android.shifttemple.features.users.data.UsersDataSourceImpl;
 import ru.ftc.android.shifttemple.features.users.data.UsersLocalRepository;
-import ru.ftc.android.shifttemple.features.users.data.UsersLocalRepositoryImpl;
+import ru.ftc.android.shifttemple.features.users.data.UsersRepository;
+import ru.ftc.android.shifttemple.features.users.data.UsersRepositoryImpl;
 
 final class PresenterFactory {
 
@@ -26,11 +28,19 @@ final class PresenterFactory {
                 .getRetrofit()
                 .create(TasksApi.class);
 
+        final UsersApi apiUser = App.getRetrofitProvider(context)
+                .getRetrofit()
+                .create(UsersApi.class);
+
         final UsersLocalRepository usersRepositoryLocal = UserLocalRepositoryFactory.create(context);
 
         final TasksDataSource dataSource = new TasksDataSourceImpl(api);
         final TasksRepository repository = new TasksRepositoryImpl(dataSource);
-        return new TasksInteractorImpl(repository, usersRepositoryLocal);
+
+        final UsersDataSource dataSourceServer = new UsersDataSourceImpl(apiUser);
+        final UsersRepository repositoryServer = new UsersRepositoryImpl(dataSourceServer);
+
+        return new TasksInteractorImpl(repository, usersRepositoryLocal, repositoryServer );
     }
 
     static TasksListPresenter createTaskListPresenter(Context context) {

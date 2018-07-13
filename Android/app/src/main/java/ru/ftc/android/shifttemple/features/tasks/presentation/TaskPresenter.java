@@ -1,8 +1,5 @@
 package ru.ftc.android.shifttemple.features.tasks.presentation;
 
-import android.util.Pair;
-import android.view.View;
-
 import java.util.List;
 import java.util.Set;
 
@@ -165,6 +162,26 @@ final class TaskPresenter extends MvpPresenter<TaskView> {
                 bidsLocalDataSource.putBidId(bid.getId());
                 view.changeCloseButtonVisibility(false);
                 loadTaskBids();
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                view.hideProgress();
+                view.showError(throwable.getMessage());
+            }
+        });
+    }
+
+    public void onCloseTaskClicked() {
+        interactor.finishTask(task_id, new Carry<Success>() {
+            @Override
+            public void onSuccess(Success result) {
+                if (view == null) {
+                    return;
+                }
+                view.hideProgress();
+                view.showError("Task closed");
+                view.leaveTaskActivity();
             }
 
             @Override

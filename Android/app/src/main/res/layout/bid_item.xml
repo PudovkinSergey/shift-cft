@@ -8,23 +8,21 @@
 
     <TextView
         android:id="@+id/bid_item_username"
-        style="@style/Base.TextAppearance.AppCompat.Body2"
-        android:textSize="16sp"
+        style="@style/Base.TextAppearance.AppCompat.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="@string/bid_item_username_text" />
 
     <TextView
         android:id="@+id/bid_item_text"
-        style="@style/Base.TextAppearance.AppCompat.Body2"
-        android:textSize="16sp"
+        style="@style/Base.TextAppearance.AppCompat.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="@string/bid_item_text" />
 
     <TextView
         android:id="@+id/bid_item_date"
-        style="@style/Base.TextAppearance.AppCompat.Body1"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="@string/bid_item_date" />
