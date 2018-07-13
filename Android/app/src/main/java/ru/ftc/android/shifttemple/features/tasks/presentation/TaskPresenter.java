@@ -158,7 +158,7 @@ final class TaskPresenter extends MvpPresenter<TaskView> {
             public void onSuccess(Success result) {
                 view.hideProgress();
                 view.showError("Bid choosed");
-                bidsLocalDataSource.putBidId(bid.getId());
+                //bidsLocalDataSource.putBidId(bid.getId());
                 view.changeCloseButtonVisibility(false);
                 loadTaskBids();
             }

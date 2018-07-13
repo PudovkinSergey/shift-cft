@@ -27,7 +27,7 @@ import ru.ftc.android.shifttemple.features.users.data.UsersLocalRepositoryImpl;
 public final class RetrofitProvider {
 
 
-    private static final String BASE_URL = "http://172.16.19.152:8080/api/"; //"http://ksware.ru/sandbox/gf-api/";
+    private static final String BASE_URL = "http://172.16.20.252:8080/api/"; //"http://ksware.ru/sandbox/gf-api/";
 
     private final Retrofit retrofit;
 
