@@ -1,6 +1,8 @@
 package ru.ftc.android.shifttemple.features.users.presentation;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -11,6 +13,8 @@ import ru.ftc.android.shifttemple.R;
 import ru.ftc.android.shifttemple.features.BaseActivity;
 import ru.ftc.android.shifttemple.features.MvpPresenter;
 import ru.ftc.android.shifttemple.features.MvpView;
+import ru.ftc.android.shifttemple.features.tasks.presentation.NewTaskActivity;
+import ru.ftc.android.shifttemple.features.tasks.presentation.TasksActivity;
 import ru.ftc.android.shifttemple.features.users.domain.model.User;
 
 /**
@@ -23,6 +27,7 @@ public class UserProfileActivity extends BaseActivity implements UserProfileView
     private TextView karmaText;
     private TextView phoneNumberText;
     private LinearLayout activity;
+    private FloatingActionButton createTaskButton;
 
     UserProfilePresenter presenter;
 
@@ -39,10 +44,22 @@ public class UserProfileActivity extends BaseActivity implements UserProfileView
         karmaText=findViewById(R.id.karma_text);
         phoneNumberText=findViewById(R.id.phone_number_text);
         activity=findViewById(R.id.activity_profile);
+        createTaskButton=findViewById(R.id.create_task_button);
+        createTaskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                presenter.onCreateTaskClicked();
+            }
+        });
 
     }
 
+    @Override
+    public void showNewTaskForm() {
+        Intent intent = new Intent(UserProfileActivity.this, NewTaskActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void showProgress() {
