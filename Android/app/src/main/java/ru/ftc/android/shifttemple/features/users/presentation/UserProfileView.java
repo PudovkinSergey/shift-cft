@@ -13,4 +13,6 @@ public interface UserProfileView extends MvpView {
     void showError(String message);
     void showProfile(User user);
     void showNewTaskForm();
+
+    void hideActivity();
 }
