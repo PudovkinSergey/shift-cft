@@ -6,7 +6,7 @@ import ru.ftc.android.shifttemple.features.users.domain.model.User;
 import ru.ftc.android.shifttemple.network.Carry;
 
 /**
- * Created by Pudov on 09.07.2018.
+ *  Created by Pudov on 09.07.2018.
  */
 
 public class UserProfilePresenter extends MvpPresenter<UserProfileView> {
@@ -41,6 +41,10 @@ public class UserProfilePresenter extends MvpPresenter<UserProfileView> {
             }
         }
         );
+
+    }
+    public void onCreateTaskClicked() {
+        view.showNewTaskForm();
 
     }
 }
