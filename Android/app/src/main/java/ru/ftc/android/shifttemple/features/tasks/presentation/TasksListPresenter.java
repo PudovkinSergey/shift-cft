@@ -52,14 +52,9 @@ final class TasksListPresenter extends MvpPresenter<TasksListView> {
                     return;
                 }
 
-                ArrayList<Task> listTasks = new ArrayList<Task>();
-                for (Task task : result) {
-                    if (task.getStatus() == true) {
-                        listTasks.add(task);
-                    }
-                }
 
-                view.showTaskList(listTasks);
+
+                view.showTaskList(result);
                 view.hideProgress();
             }
 
@@ -94,7 +89,7 @@ final class TasksListPresenter extends MvpPresenter<TasksListView> {
 
 
     public void onCreateTaskClicked() {
-        if (user.getKarma()>0){
+        if (user != null && user.getKarma()>0){
             view.showNewTaskForm();
         } else {
             view.showError("You do not have enough karma, help someone");

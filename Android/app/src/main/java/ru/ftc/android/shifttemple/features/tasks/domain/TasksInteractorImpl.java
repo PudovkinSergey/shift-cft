@@ -36,7 +36,6 @@ public final class TasksInteractorImpl implements TasksInteractor {
     }
 
 
-
     private Boolean checkTaskIsMine(Task task) {
         Boolean result = false;
 
@@ -127,7 +126,7 @@ public final class TasksInteractorImpl implements TasksInteractor {
     @Override
     public void loadLocalUser(Carry<User> carry) {
         final User user = repositoryUsersLocal.getUser();
-        if(user != null) {
+        if (user != null) {
             carry.onSuccess(user);
         } else {
             carry.onFailure(new UnknownException("Empty local user"));
@@ -141,6 +140,24 @@ public final class TasksInteractorImpl implements TasksInteractor {
         }
 
         User user = repositoryUsersLocal.getUser();
-        repositoryUsersServer.loadUser(user.getId(), carry);
+        carry.onSuccess(user);
+
+        if (user != null) {
+            repositoryUsersServer.loadUser(user.getId(), new Carry<User>() {
+                @Override
+                public void onSuccess(User result) {
+                    repositoryUsersLocal.setUser(result);
+                }
+
+                @Override
+                public void onFailure(Throwable throwable) {
+                    //
+                }
+
+            });
+        }
+
+
+
     }
 }

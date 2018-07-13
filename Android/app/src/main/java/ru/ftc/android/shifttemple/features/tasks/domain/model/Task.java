@@ -7,7 +7,7 @@ public final class Task {
     private String short_description;
     private String description;
     private String date;
-    private boolean status;
+    private String status;
     private String id_selected_bid;
 
     private Boolean task_is_mine;
@@ -44,7 +44,7 @@ public final class Task {
         return date;
     }
 
-    public boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
