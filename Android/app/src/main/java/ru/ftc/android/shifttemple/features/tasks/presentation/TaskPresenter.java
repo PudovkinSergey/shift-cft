@@ -18,6 +18,8 @@ final class TaskPresenter extends MvpPresenter<TaskView> {
 
     private String task_id;
 
+    private Task task;
+
     TaskPresenter(TasksInteractor interactor, BidsLocalDataSource bidsLocalDataSource) {
         this.interactor = interactor;
         this.bidsLocalDataSource = bidsLocalDataSource;
@@ -67,7 +69,9 @@ final class TaskPresenter extends MvpPresenter<TaskView> {
 
 
     void onBidSelected(Bid bid) {
-        view.showConfirmationDialog(bid);
+        if(task.getTaskIsMine()) {
+            view.showConfirmationDialog(bid);
+        }
 
     }
 
@@ -81,10 +85,12 @@ final class TaskPresenter extends MvpPresenter<TaskView> {
                     return;
                 }
 
+                task = result;
+
                 view.showTask(result);
-                if (result.getTaskIsMine()) { // TODO: remove true
+                //if (result.getTaskIsMine()) { // TODO: remove true
                     loadTaskBids();
-                }
+                //}
             }
 
             @Override
@@ -142,6 +148,9 @@ final class TaskPresenter extends MvpPresenter<TaskView> {
     }
 
     void onBidChoosed(final Bid bid) {
+        if(!task.getTaskIsMine()) {
+            return ;
+        }
         view.showProgress();
 
         interactor.chooseTaskBid(task_id, bid, new Carry<Success>() {
@@ -163,6 +172,9 @@ final class TaskPresenter extends MvpPresenter<TaskView> {
     }
 
     public void onCloseTaskClicked() {
+        if(!task.getTaskIsMine()) {
+            return ;
+        }
         interactor.finishTask(task_id, new Carry<Success>() {
             @Override
             public void onSuccess(Success result) {

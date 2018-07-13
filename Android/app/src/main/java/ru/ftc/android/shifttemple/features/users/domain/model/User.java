@@ -1,7 +1,7 @@
 package ru.ftc.android.shifttemple.features.users.domain.model;
 
 public final class User {
-    private String user_id;
+    private String id;
     private String name;
     private String phone;
     private String vk_link;
@@ -20,14 +20,14 @@ public final class User {
     }
 
     public User(String user_id, String name, String phone) {
-        this.user_id = user_id;
+        this.id = user_id;
         this.name = name;
         this.phone = phone;
 
     }
 
     public String getId() {
-        return user_id;
+        return id;
     }
 
 

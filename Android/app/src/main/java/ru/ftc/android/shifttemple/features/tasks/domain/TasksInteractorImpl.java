@@ -39,8 +39,9 @@ public final class TasksInteractorImpl implements TasksInteractor {
     private Boolean checkTaskIsMine(Task task) {
         Boolean result = false;
 
-        if (repositoryUsersLocal.getUser() != null && task.getUserId() != null) {
-            result = (task.getUserId().equals(repositoryUsersLocal.getUser().getId()));
+        User user = repositoryUsersLocal.getUser();
+        if (user != null && task.getUserId() != null) {
+            result = (task.getUserId().equals(user.getId()));
         }
 
         return result;
