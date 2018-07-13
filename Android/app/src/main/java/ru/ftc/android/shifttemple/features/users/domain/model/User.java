@@ -9,6 +9,16 @@ public final class User {
     private String email;
     private long karma;
 
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public User(String user_id, String name, String phone) {
         this.user_id = user_id;
         this.name = name;

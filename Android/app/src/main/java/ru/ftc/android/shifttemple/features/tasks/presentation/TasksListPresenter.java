@@ -89,11 +89,13 @@ final class TasksListPresenter extends MvpPresenter<TasksListView> {
 
 
     public void onCreateTaskClicked() {
+        view.showNewTaskForm();/*
         if (user != null && user.getKarma()>0){
             view.showNewTaskForm();
         } else {
             view.showError("You do not have enough karma, help someone");
         }
+        */
 
     }
 }

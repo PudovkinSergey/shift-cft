@@ -12,8 +12,9 @@ public final class Task {
 
     private Boolean task_is_mine;
 
-    public Task(String title, String description) {
+    public Task(String title, String short_description, String description) {
         this.title = title;
+        this.short_description = short_description;
         this.description = description;
     }
 
