@@ -155,7 +155,9 @@ public final class TasksActivity extends BaseActivity implements TasksListView {
     @Override
     public void showUserInfo(User user) {
         //TODO:: show user info
-        usernameView.setText(user.getName());
-        userInfo.setText(getString(R.string.tasks_your_rating,String.valueOf(user.getKarma())));
+        if(user != null) {
+            usernameView.setText(user.getName());
+            userInfo.setText(getString(R.string.tasks_your_rating, String.valueOf(user.getKarma())));
+        }
     }
 }

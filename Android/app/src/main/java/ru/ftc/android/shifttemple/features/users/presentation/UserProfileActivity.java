@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -29,6 +30,8 @@ public class UserProfileActivity extends BaseActivity implements UserProfileView
     private LinearLayout activity;
     private FloatingActionButton createTaskButton;
 
+    private Button logoutButton;
+
     UserProfilePresenter presenter;
 
     @Override
@@ -53,12 +56,26 @@ public class UserProfileActivity extends BaseActivity implements UserProfileView
             }
         });
 
+        logoutButton = findViewById(R.id.logout_user_button);
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onLogOutClicked();
+            }
+        });
+
     }
 
     @Override
     public void showNewTaskForm() {
         Intent intent = new Intent(UserProfileActivity.this, NewTaskActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void hideActivity() {
+        finish();
     }
 
     @Override

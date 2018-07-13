@@ -45,6 +45,11 @@ public class UserProfilePresenter extends MvpPresenter<UserProfileView> {
     }
     public void onCreateTaskClicked() {
         view.showNewTaskForm();
-
     }
+
+    public void onLogOutClicked(){
+        interactor.logoutUser();
+        view.hideActivity();
+    }
+
 }

@@ -35,6 +35,7 @@ public final class NewTaskActivity extends BaseActivity implements NewTaskView {
     private ProgressBar progressBar;
     private EditText inputTitle;
     private EditText inputDescription;
+    private EditText inputShortDesc;
     private Button createButton;
 
 
@@ -65,9 +66,14 @@ public final class NewTaskActivity extends BaseActivity implements NewTaskView {
         inputTitle = findViewById(R.id.new_task_input_title);
         inputDescription = findViewById(R.id.new_task_input_description);
 
+        inputShortDesc = findViewById(R.id.new_task_input_short_description);
+
+
 
         inputTitle.addTextChangedListener(titleWatcher);
         inputDescription.addTextChangedListener(descriptiondWatcher);
+
+        inputShortDesc.addTextChangedListener(shortDescWatcher);
 
 
     }
@@ -96,6 +102,18 @@ public final class NewTaskActivity extends BaseActivity implements NewTaskView {
 
         public void afterTextChanged(Editable s) {
             presenter.onDescriptionTextChanged(s.toString());
+        }
+    };
+
+    private final TextWatcher shortDescWatcher = new TextWatcher() {
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+
+        public void afterTextChanged(Editable s) {
+            presenter.onShortDescriptionTextChanged(s.toString());
         }
     };
 

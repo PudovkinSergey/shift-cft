@@ -14,6 +14,7 @@ final class NewTaskPresenter extends MvpPresenter<NewTaskView> {
 
     private String titleText = "";
     private String descriptionText = "";
+    private String shortDescText = "";
 
 
     NewTaskPresenter(TasksInteractor interactor) {
@@ -36,7 +37,7 @@ final class NewTaskPresenter extends MvpPresenter<NewTaskView> {
 
         view.showError("Your input:\n" + titleText + "\n" + descriptionText);
 
-        final Task task = new Task(titleText, descriptionText);
+        final Task task = new Task(titleText, shortDescText, descriptionText);
         interactor.createTask(task, new Carry<Task>() {
             @Override
             public void onSuccess(Task result) {
@@ -58,5 +59,9 @@ final class NewTaskPresenter extends MvpPresenter<NewTaskView> {
 
     public void onDescriptionTextChanged(final String s) {
         descriptionText = s;
+    }
+
+    public void onShortDescriptionTextChanged(String s) {
+        shortDescText = s;
     }
 }

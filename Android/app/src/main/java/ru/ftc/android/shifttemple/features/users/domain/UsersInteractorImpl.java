@@ -1,7 +1,5 @@
 package ru.ftc.android.shifttemple.features.users.domain;
 
-import java.util.List;
-
 import ru.ftc.android.shifttemple.exception.UnknownException;
 import ru.ftc.android.shifttemple.features.books.domain.model.Success;
 import ru.ftc.android.shifttemple.features.users.data.UsersLocalRepository;
@@ -28,13 +26,22 @@ public final class UsersInteractorImpl implements UsersInteractor {
     }
 
     @Override
-    public void loginUser(String login, String password, Carry<User> carry) {
-        //repository.loginUser(login, password, carry);
-        //TODO: change on server response
-        repositoryLocal.setUserToken("test_token");
-        final User user = new User("1", "Ivan", "7812342424");
-        repositoryLocal.setUser(user);
-        carry.onSuccess(user);
+    public void loginUser(String login, String password, final Carry<User> carry) {
+        repository.loginUser(login, password, new Carry<User>() {
+            @Override
+            public void onSuccess(User result) {
+                repositoryLocal.setUserToken(result.getToken());
+                repositoryLocal.setUser(result);
+                result.setToken("");
+                carry.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                carry.onFailure(throwable);
+            }
+        });
+
     }
 
     @Override

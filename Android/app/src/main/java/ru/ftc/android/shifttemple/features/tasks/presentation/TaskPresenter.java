@@ -49,16 +49,6 @@ final class TaskPresenter extends MvpPresenter<TaskView> {
                     }
                 }
 
-                //TODO DELETE THIS CODE
-//                choosedBidExists = true;
-//                Bid firstBid = result.get(0);
-//                result.get(0).setSelected(true);
-//                firstBid.setEmail("mejdld@gmail.com");
-//                firstBid.setPhone("+79231138383");
-//                firstBid.setTg_link("telegram.me/oldlentach");
-//                firstBid.setVk_link("https://vk.com/oldlentach");
-                //TODO DELETE THIS CODE
-
                 view.changeCloseButtonVisibility(!choosedBidExists);
 
                 view.showBidList(result);
@@ -92,7 +82,7 @@ final class TaskPresenter extends MvpPresenter<TaskView> {
                 }
 
                 view.showTask(result);
-                if (result.getTaskIsMine() || true) { // TODO: remove true
+                if (result.getTaskIsMine()) { // TODO: remove true
                     loadTaskBids();
                 }
             }
