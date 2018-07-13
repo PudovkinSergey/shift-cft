@@ -22,7 +22,6 @@ public class UserProfileActivity extends BaseActivity implements UserProfileView
     private TextView helloText;
     private TextView karmaText;
     private TextView phoneNumberText;
-    private TextView yourTasksText;
     private LinearLayout activity;
 
     UserProfilePresenter presenter;
@@ -39,7 +38,6 @@ public class UserProfileActivity extends BaseActivity implements UserProfileView
         helloText=findViewById(R.id.hello_text);
         karmaText=findViewById(R.id.karma_text);
         phoneNumberText=findViewById(R.id.phone_number_text);
-        yourTasksText=findViewById(R.id.your_tasks_text);
         activity=findViewById(R.id.activity_profile);
 
 

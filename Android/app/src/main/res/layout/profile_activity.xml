@@ -3,7 +3,6 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -21,7 +20,7 @@
         android:id="@+id/hello_text"
         android:text="@string/hello_text"
 
-        android:layout_marginLeft="@dimen/space_normal"
+        android:layout_marginStart="@dimen/space_normal"
         android:layout_marginTop="@dimen/space_normal"
         />
 
@@ -34,7 +33,7 @@
         android:text="@string/karma_text"
 
 
-        android:layout_marginLeft="@dimen/space_normal"
+        android:layout_marginStart="@dimen/space_normal"
         app:layout_constraintTop_toBottomOf="@id/hello_text"
         android:layout_marginTop="@dimen/space_normal"
 
@@ -48,7 +47,7 @@
         android:text="@string/phone_number_text"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="@dimen/space_normal"
+        android:layout_marginStart="@dimen/space_normal"
         app:layout_constraintTop_toBottomOf="@id/karma_text"
         android:layout_marginTop="@dimen/space_normal"
 
@@ -62,7 +61,7 @@
         android:text="@string/your_tasks"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="@dimen/space_normal"
+        android:layout_marginStart="@dimen/space_normal"
         app:layout_constraintTop_toBottomOf="@id/phone_number_text"
         android:layout_marginTop="@dimen/space_normal"
 
@@ -89,10 +88,10 @@
         android:layout_gravity="center" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/create_task_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/space_normal"
         app:fabSize="normal"
         app:srcCompat="@android:drawable/ic_input_add" />
