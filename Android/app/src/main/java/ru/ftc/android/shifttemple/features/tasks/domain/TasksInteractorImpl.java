@@ -56,11 +56,11 @@ public final class TasksInteractorImpl implements TasksInteractor {
     }
 
     @Override
-    public void finishTask(String id, Carry<Success> carry) {
+    public void finishTask(String id, String status, Carry<Success> carry) {
         if (!checkUserToken(carry)) {
             return;
         }
-        repository.finishTask(id, carry);
+        repository.finishTask(id, status, carry);
     }
 
     @Override

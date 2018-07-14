@@ -60,6 +60,9 @@ final class TasksListPresenter extends MvpPresenter<TasksListView> {
 
             @Override
             public void onFailure(Throwable throwable) {
+                if(view == null){
+                    return;
+                }
                 view.hideProgress();
                 view.showError(throwable.getMessage());
 

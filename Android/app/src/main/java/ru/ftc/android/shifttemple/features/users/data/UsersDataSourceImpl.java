@@ -21,8 +21,8 @@ public final class UsersDataSourceImpl implements UsersDataSource {
     }
 
     @Override
-    public void createUser(String login, String password, User user, Carry<User> carry) {
-        usersApi.createUser(login, password, user).enqueue(new DefaultCallback(carry));
+    public void createUser(User user, Carry<User> carry) {
+        usersApi.createUser(user).enqueue(new DefaultCallback(carry));
     }
 
     @Override

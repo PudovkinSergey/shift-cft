@@ -41,8 +41,10 @@ final class UserRegisterPresenter extends MvpPresenter<UserLoginView> {
         }
         view.showProgress();
         User user = new User("", nameText, phoneText);
+        user.setLogin(loginText);
+        user.setPassword(passwordText);
 
-        interactor.createUser(loginText, passwordText, user, new Carry<User>() {
+        interactor.createUser(user, new Carry<User>() {
             @Override
             public void onSuccess(User result) {
                 view.hideProgress();

@@ -10,7 +10,7 @@ public interface UsersRepository {
 
     void loadUser(String id, Carry<User> carry);
 
-    void createUser(String login, String password, User user, Carry<User> carry);
+    void createUser(User user, Carry<User> carry);
 
     void checkUserToken(String token, Carry<Success> carry);
 

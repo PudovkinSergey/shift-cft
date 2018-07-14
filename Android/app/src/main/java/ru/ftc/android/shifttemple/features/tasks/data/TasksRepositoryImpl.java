@@ -46,8 +46,8 @@ public final class TasksRepositoryImpl implements TasksRepository {
     }
 
     @Override
-    public void finishTask(String id, Carry<Success> carry) {
-        dataSource.finishTask(id, carry);
+    public void finishTask(String id, String status, Carry<Success> carry) {
+        dataSource.finishTask(id, status, carry);
     }
 
     @Override

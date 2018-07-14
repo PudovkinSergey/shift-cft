@@ -175,7 +175,7 @@ final class TaskPresenter extends MvpPresenter<TaskView> {
         if(!task.getTaskIsMine()) {
             return ;
         }
-        interactor.finishTask(task_id, new Carry<Success>() {
+        interactor.finishTask(task_id, "OK", new Carry<Success>() {
             @Override
             public void onSuccess(Success result) {
                 if (view == null) {

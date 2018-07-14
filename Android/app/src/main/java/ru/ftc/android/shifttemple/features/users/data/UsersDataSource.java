@@ -13,8 +13,7 @@ public interface UsersDataSource {
     void loginUser(String login, String password, Carry<User> carry);
 
 
-    void createUser(String login, String password,
-                    User user, Carry<User> carry);
+    void createUser( User user, Carry<User> carry);
 
     void checkUserToken(String token, Carry<Success> carry);
 }
