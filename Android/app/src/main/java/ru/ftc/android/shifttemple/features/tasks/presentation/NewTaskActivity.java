@@ -1,14 +1,6 @@
 package ru.ftc.android.shifttemple.features.tasks.presentation;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Build;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -17,15 +9,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import java.util.List;
-
 import ru.ftc.android.shifttemple.R;
 import ru.ftc.android.shifttemple.features.BaseActivity;
 import ru.ftc.android.shifttemple.features.MvpPresenter;
 import ru.ftc.android.shifttemple.features.MvpView;
-import ru.ftc.android.shifttemple.features.tasks.domain.model.Bid;
-import ru.ftc.android.shifttemple.features.tasks.domain.model.Task;
-import ru.ftc.android.shifttemple.features.users.presentation.UserLoginLoginActivity;
 
 public final class NewTaskActivity extends BaseActivity implements NewTaskView {
 

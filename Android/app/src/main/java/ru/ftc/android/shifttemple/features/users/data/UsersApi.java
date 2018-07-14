@@ -29,7 +29,8 @@ public interface UsersApi {
     @POST("users/check_token")
     Call<Wrapper<Success>> checkUserToken(@Field("token") String token);
 
-
+    //TODO:
+    @FormUrlEncoded
     @POST("users/register")
     Call<Wrapper<User>> createUser(@Field("login") String login,
                                    @Field("password") String password,

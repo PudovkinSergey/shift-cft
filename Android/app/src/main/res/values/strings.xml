@@ -33,5 +33,6 @@
     <string name="tasks_your_rating">Your rating: %1$s</string>
     <string name="logout_text">Logout</string>
     <string name="new_task_short_desc_hint">Short Description</string>
+    <string name="registration_title">Registration</string>
 
 </resources>

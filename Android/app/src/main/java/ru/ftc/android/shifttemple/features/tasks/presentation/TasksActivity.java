@@ -20,7 +20,7 @@ import ru.ftc.android.shifttemple.features.MvpPresenter;
 import ru.ftc.android.shifttemple.features.MvpView;
 import ru.ftc.android.shifttemple.features.tasks.domain.model.Task;
 import ru.ftc.android.shifttemple.features.users.domain.model.User;
-import ru.ftc.android.shifttemple.features.users.presentation.UserLoginLoginActivity;
+import ru.ftc.android.shifttemple.features.users.presentation.UserLoginActivity;
 import ru.ftc.android.shifttemple.features.users.presentation.UserProfileActivity;
 
 public final class TasksActivity extends BaseActivity implements TasksListView {
@@ -143,7 +143,7 @@ public final class TasksActivity extends BaseActivity implements TasksListView {
 
     @Override
     public void showLoginForm() {
-        Intent intent = new Intent(TasksActivity.this, UserLoginLoginActivity.class);
+        Intent intent = new Intent(TasksActivity.this, UserLoginActivity.class);
         startActivity(intent);
     }
 
