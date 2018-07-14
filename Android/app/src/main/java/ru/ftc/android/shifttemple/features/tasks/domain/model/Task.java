@@ -8,7 +8,7 @@ public final class Task {
     private String description;
     private String date;
     private String status;
-    private String id_selected_bid;
+    private String chosed_bid;
 
     private Boolean task_is_mine;
 
@@ -49,8 +49,8 @@ public final class Task {
         return status;
     }
 
-    public String getIdSelectedBid() {
-        return id_selected_bid;
+    public String getChosedBid() {
+        return chosed_bid;
     }
 
     public Boolean getTaskIsMine() {

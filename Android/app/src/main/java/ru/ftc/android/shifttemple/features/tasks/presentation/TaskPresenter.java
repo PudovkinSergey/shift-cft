@@ -38,20 +38,10 @@ final class TaskPresenter extends MvpPresenter<TaskView> {
             public void onSuccess(List<Bid> result) {
 
                 view.hideProgress();
-                Set<String> bidIds = bidsLocalDataSource.getBidIds();
 
-                boolean choosedBidExists = false;
 
-                for (Bid currentBid : result) {
-                    for (String currentBidId : bidIds) {
-                        if (currentBid.getId().equals(currentBidId)) {
-                            choosedBidExists = true;
-                            currentBid.setSelected(true);
-                        }//
-                    }
-                }
 
-                view.changeCloseButtonVisibility(!choosedBidExists);
+                view.changeCloseButtonVisibility(!(task.getTaskIsMine() && task.getChosedBid() != null));
 
                 view.showBidList(result);
             }
