@@ -74,14 +74,7 @@ final class TaskDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         bids.clear();
         bids.addAll(bidsList);
 
-        checkBidSelected = false;
 
-        for (Bid bid : bids) {
-            if (bid.isSelected()){
-                checkBidSelected = true;
-            }
-
-        }
 
         notifyDataSetChanged();
     }
