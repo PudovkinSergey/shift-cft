@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+**/.idea/
+**/build/
+**/out/
+**/**.log
+**/.gradle
+**/backend.iml
+
+# frontend
+**/node_modules
+**/yarn-error.log
+**/npm-error.log
