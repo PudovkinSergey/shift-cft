@@ -22,8 +22,8 @@ public final class UsersRepositoryImpl implements UsersRepository {
     }
 
     @Override
-    public void createUser(String login, String password, User user, Carry<User> carry) {
-        dataSource.createUser(login, password, user, carry);
+    public void createUser(User user, Carry<User> carry) {
+        dataSource.createUser(user, carry);
     }
 
     @Override

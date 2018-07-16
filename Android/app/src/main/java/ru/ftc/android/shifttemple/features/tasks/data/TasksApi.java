@@ -5,6 +5,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -45,7 +47,9 @@ public interface TasksApi {
     Call<Wrapper<Success>> chooseTaskBid(@Path("id") String id, @Body Bid bid);
 
 
+
+    @FormUrlEncoded
     @POST("tasks/{id}/finish")
-    Call<Wrapper<Success>> finishTask(@Path("id") String id);
+    Call<Wrapper<Success>> finishTask(@Path("id") String id, @Field("status") String status);
 
 }

@@ -44,4 +44,8 @@ final class PresenterFactory {
 
         return new UserProfilePresenter(createUserInteractor(context));
     }
+
+    static UserRegisterPresenter createUserRegisterPresenter(Context context){
+       return new UserRegisterPresenter(createUserInteractor(context));
+    }
 }

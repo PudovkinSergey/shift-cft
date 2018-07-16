@@ -2,16 +2,13 @@
   "status": "OK",
   "message": "Error/Or No",
   "data": {
-  	"token": "string_token",
-  	"user":{
+  		"token": "string_token",
   		"user_id": 11,
 	  	"name": "Ivan Ivanovich",
 	  	"phone": "1113123",
 	  	"vk_link": "may be",
 	  	"tg_link": "may be",
 	  	"email": "may be",
-	  	
 	  	"karma": 77
   	}
-  }
 }

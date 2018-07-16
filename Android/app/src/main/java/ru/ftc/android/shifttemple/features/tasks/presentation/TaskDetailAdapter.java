@@ -74,14 +74,7 @@ final class TaskDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         bids.clear();
         bids.addAll(bidsList);
 
-        checkBidSelected = false;
 
-        for (Bid bid : bids) {
-            if (bid.isSelected()){
-                checkBidSelected = true;
-            }
-
-        }
 
         notifyDataSetChanged();
     }
@@ -117,7 +110,8 @@ final class TaskDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             bidUserNameView.setText(bid.getUserName());
             bidTextView.setText(bid.getText());
             bidDateView.setText(bid.getDate());
-            if (bid.isSelected()) {
+            if (bid.getId() != null && task.getChosedBid() != null &&
+                    task.getChosedBid().equals(bid.getId())) {
                 bidPhone.setText(bid.getPhone());
                 bidTgLink.setText(bid.getTgLink());
                 bidVkLink.setText(bid.getVkLink());

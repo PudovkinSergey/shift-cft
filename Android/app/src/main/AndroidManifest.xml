@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".features.books.presentation.BookActivity" />
-        <activity android:name=".features.users.presentation.UserLoginLoginActivity" />
+        <activity android:name=".features.users.presentation.UserLoginActivity" />
         <activity
             android:name=".features.tasks.presentation.TaskActivity"
             android:label="@string/task_activity_title" />
@@ -28,6 +28,11 @@
         <activity
             android:name=".features.users.presentation.UserProfileActivity"
             android:label="@string/my_profile_title" />
+
+
+        <activity
+            android:name=".features.users.presentation.UserRegisterActivity"
+            android:label="@string/registration_title" />
     </application>
 
 </manifest>

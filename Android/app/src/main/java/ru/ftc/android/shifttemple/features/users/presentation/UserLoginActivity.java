@@ -1,5 +1,6 @@
 package ru.ftc.android.shifttemple.features.users.presentation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,7 +16,7 @@ import ru.ftc.android.shifttemple.features.MvpPresenter;
 import ru.ftc.android.shifttemple.features.MvpView;
 
 
-public final class UserLoginLoginActivity extends BaseActivity implements UserLoginView {
+public final class UserLoginActivity extends BaseActivity implements UserLoginView {
 
     private ProgressBar progressBar;
     private EditText inputLogin;
@@ -51,10 +52,8 @@ public final class UserLoginLoginActivity extends BaseActivity implements UserLo
         linkRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(TasksActivity.this, UserLoginLoginActivity.class);
-
-                //startActivity(intent);
-                showError("Register later");
+                Intent intent = new Intent(UserLoginActivity.this, UserRegisterActivity.class);
+                startActivity(intent);
             }
         });
 

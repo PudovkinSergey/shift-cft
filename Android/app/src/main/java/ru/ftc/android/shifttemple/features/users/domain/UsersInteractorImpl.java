@@ -51,8 +51,8 @@ public final class UsersInteractorImpl implements UsersInteractor {
     }
 
     @Override
-    public void createUser(String login, String password, User user, Carry<User> carry) {
-        repository.createUser(login, password, user, carry);
+    public void createUser(User user, Carry<User> carry) {
+        repository.createUser(user, carry);
     }
 
     @Override

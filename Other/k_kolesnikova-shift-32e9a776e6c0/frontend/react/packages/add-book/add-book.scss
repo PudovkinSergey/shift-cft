@@ -1,0 +1,25 @@
+.add-book {
+  margin-top: 40px;
+  
+  &_field {
+    display: block;
+
+    &_control {
+      display: block;
+
+      margin-top: 8px;
+      padding: 8px 12px;
+
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+  }
+
+  &_button {
+    margin-top: 8px;
+    padding: 8px 24px;
+
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+}

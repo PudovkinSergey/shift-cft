@@ -39,8 +39,9 @@ public final class TasksInteractorImpl implements TasksInteractor {
     private Boolean checkTaskIsMine(Task task) {
         Boolean result = false;
 
-        if (repositoryUsersLocal.getUser() != null && task.getUserId() != null) {
-            result = (task.getUserId().equals(repositoryUsersLocal.getUser().getId()));
+        User user = repositoryUsersLocal.getUser();
+        if (user != null && task.getUserId() != null) {
+            result = (task.getUserId().equals(user.getId()));
         }
 
         return result;
@@ -55,11 +56,11 @@ public final class TasksInteractorImpl implements TasksInteractor {
     }
 
     @Override
-    public void finishTask(String id, Carry<Success> carry) {
+    public void finishTask(String id, String status, Carry<Success> carry) {
         if (!checkUserToken(carry)) {
             return;
         }
-        repository.finishTask(id, carry);
+        repository.finishTask(id, status, carry);
     }
 
     @Override

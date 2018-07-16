@@ -25,7 +25,7 @@ public interface TasksInteractor {
 
     void chooseTaskBid(String id, Bid bid, Carry<Success> carry);
 
-    void finishTask(String id, Carry<Success> carry);
+    void finishTask(String id, String status,  Carry<Success> carry);
 
 
     //TODO is bad, but hz

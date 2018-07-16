@@ -1,13 +1,33 @@
 package ru.ftc.android.shifttemple.features.users.domain.model;
 
 public final class User {
-    private String user_id;
+    private String id;
     private String name;
     private String phone;
     private String vk_link;
     private String tg_link;
     private String email;
     private long karma;
+
+    private String login;
+
+    private String password;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     private String token;
 
@@ -20,14 +40,14 @@ public final class User {
     }
 
     public User(String user_id, String name, String phone) {
-        this.user_id = user_id;
+        this.id = user_id;
         this.name = name;
         this.phone = phone;
 
     }
 
     public String getId() {
-        return user_id;
+        return id;
     }
 
 

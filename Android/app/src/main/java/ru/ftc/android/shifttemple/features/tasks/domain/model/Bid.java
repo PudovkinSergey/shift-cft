@@ -10,7 +10,7 @@ public final class Bid {
 
     //TODO DELETE
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.user_phone = phone;
     }
 
     public void setVk_link(String vk_link) {
@@ -26,24 +26,15 @@ public final class Bid {
     }
     //TODO DELETE
 
-    private String phone;
+    private String user_phone;
     private String vk_link;
     private String tg_link;
     private String email;
 
-    private boolean isSelected;
 
-
-    public void setSelected(boolean selected) {
-        isSelected = selected;
-    }
-
-    public boolean isSelected() {
-        return isSelected;
-    }
 
     public String getPhone() {
-        return phone;
+        return user_phone;
     }
 
     public String getVkLink() {
